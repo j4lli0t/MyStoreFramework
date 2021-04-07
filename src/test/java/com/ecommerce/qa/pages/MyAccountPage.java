@@ -42,4 +42,10 @@ public class MyAccountPage
         return driver.findElement(alertMessage).getText();
     }
 
+    public void clearInput()
+    {
+        driver.findElement(UserPasswd).clear();
+        driver.findElement(UserInput).clear();
+    }
+
 }

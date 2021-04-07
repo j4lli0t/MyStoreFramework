@@ -1,6 +1,5 @@
 package com.ecommerce.qa.testcases.Login;
-
-import com.ecommerce.qa.baseTest.BaseTest;
+import com.ecommerce.qa.baseTest.BaseTest                 ;
 import com.ecommerce.qa.pages.IndexPage;
 import com.ecommerce.qa.pages.MyAccountPage;
 import org.testng.Assert;
@@ -12,32 +11,37 @@ public class TC_Login_Validation_Messages extends BaseTest
     MyAccountPage accountPage = new MyAccountPage(driver);
 
 
-    @Test
+    @Test(priority = 1)
     public void emailIsRequired()
     {
         index.doClickSingInButton();
+        accountPage.clearInput();
         accountPage.clickSingButton();
         Assert.assertEquals(accountPage.getTextAlertMessage(),"An email address required.");
     }
 
-    @Test
+    @Test(priority = 2)
     public void passwdIsRequired()
     {
+        accountPage.clearInput();
         accountPage.fillUserInput("qatest@gmail.com");
         accountPage.clickSingButton();
         Assert.assertEquals(accountPage.getTextAlertMessage(),"Password is required.");
     }
 
-    @Test
+    @Test(priority = 3)
     public void invalidEmailWarn()
     {
-        accountPage.fillUserPasswd("qatest");
+        accountPage.clearInput();
+        accountPage.fillUserInput("qatest");
         accountPage.clickSingButton();
         Assert.assertEquals(accountPage.getTextAlertMessage(),"Invalid email address.");
     }
 
+    @Test(priority = 4)
     public void authenticationFailed()
     {
+        accountPage.clearInput();
         accountPage.fillUserInput("qatest@gmail.com");
         accountPage.fillUserPasswd("somepasswd");
         accountPage.clickSingButton();
