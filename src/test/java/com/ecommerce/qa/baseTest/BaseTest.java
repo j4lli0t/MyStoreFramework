@@ -26,7 +26,7 @@ public class BaseTest
     @AfterTest
     public void tearDown()
     {
-        this.driver.close();
+        //this.driver.close();
     }
 
 }

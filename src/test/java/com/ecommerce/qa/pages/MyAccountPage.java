@@ -12,20 +12,34 @@ public class MyAccountPage
 
     //Locators for password,and loginButton
     private By UserInput = By.id("email");
-    private By PasswdInput = By.id("passwd");
+    private By UserPasswd = By.id("passwd");
     private By LoginButton = By.id("SubmitLogin");
     private By Logout = By.className("logout");
+    private By alertMessage = By.xpath("//*[@id=\"center_column\"]/div[1]/ol/li");
 
-    public void doLogin(String userInput,String passwdInput)
+    public void fillUserInput(String userInput)
     {
         driver.findElement(UserInput).sendKeys(userInput);
-        driver.findElement(PasswdInput).sendKeys(passwdInput);
+    }
+
+    public void fillUserPasswd(String userPasswd)
+    {
+        driver.findElement(UserPasswd).sendKeys(userPasswd);
+    }
+
+    public void clickSingButton()
+    {
         driver.findElement(LoginButton).click();
     }
 
     public void Logout()
     {
        driver.findElement(Logout).click();
+    }
+
+    public String getTextAlertMessage()
+    {
+        return driver.findElement(alertMessage).getText();
     }
 
 }

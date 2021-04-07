@@ -10,14 +10,16 @@ public class TC_Login_Logout extends BaseTest
     MyAccountPage accountPage = new MyAccountPage(driver);
 
     @Test
-    public void Login()
+    public void Login() /*Method for login in the MyStore page*/
     {
         index.doClickSingInButton();
-        accountPage.doLogin("qatest@gmail.com","test12345");
+        accountPage.fillUserInput("qatest@gmail.com");
+        accountPage.fillUserPasswd("test12345");
+        accountPage.clickSingButton();
     }
 
     @Test
-    public void Logout()
+    public void Logout() /*Method for logout in the MyStore page*/
     {
         accountPage.Logout();
     }
